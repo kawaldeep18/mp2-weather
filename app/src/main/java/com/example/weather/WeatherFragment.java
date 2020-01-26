@@ -50,6 +50,7 @@ public class WeatherFragment extends Fragment {
         ApiService api = RetrofitClient.getApiService();
         Call<Weather> call = api.getWeather();
 
+
         call.enqueue(new Callback<Weather>() {
             @Override
             public void onResponse(Call<Weather> call, Response<Weather> response) {
@@ -57,6 +58,7 @@ public class WeatherFragment extends Fragment {
                     weatherList = response.body().getConsolidatedWeather();
                     cityName.setText(response.body().getTitle());
                     temp.setText(String.valueOf(response.body().getConsolidatedWeather().get(0).getTheTemp()));
+                    adapter = new WeatherAdapter(root.getContext(), weatherList);
                     airPressureText.setText(String.valueOf(response.body().getConsolidatedWeather().get(0).getAirPressure()));
                     humidityText.setText(String.valueOf(response.body().getConsolidatedWeather().get(0).getHumidity()));
                     maxTempText.setText(String.valueOf(response.body().getConsolidatedWeather().get(0).getMaxTemp()));
