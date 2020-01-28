@@ -27,7 +27,6 @@ public class WeatherFragment extends Fragment {
     private RecyclerView recyclerView;
     private WeatherAdapter adapter;
     private List<ConsolidatedWeather> weatherList = new ArrayList<>();
-    private Weather weather;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
